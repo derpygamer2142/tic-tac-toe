@@ -48,7 +48,22 @@ export default class Square {
         if (!(this.color == "white")) {
             ctx.fillRect(this.x,this.y,this.size,this.size);
             if (this.color == "red") {
-                // draw circle. remember to actually do this.
+                ctx.fillStyle = "black";
+                ctx.beginPath();
+            
+                ctx.arc(this.x+(this.size/2), this.y+(this.size/2), (this.size/2)*0.9, 0, Math.PI * 2, false);
+                ctx.stroke();
+            }
+            else if (this.color == "blue") {
+                ctx.beginPath();
+                ctx.moveTo(this.x,this.y+this.size);
+                ctx.lineTo(this.x+this.size, this.y);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(this.x+this.size,this.y+this.size);
+                ctx.lineTo(this.x, this.y);
+                ctx.stroke();
             }
         }
         else {
