@@ -17,19 +17,27 @@ export default class Square {
 
     update() {
         if ((this.input.mouseX > this.x && this.input.mouseX < this.x + this.size) && (this.input.mouseY > this.y && this.input.mouseY < this.y + this.size)) {
+            
             if (this.input.mouseDown) {
-                this.clicked = true;
-                this.color = "red";
-                
+                if (!this.clicked) {
+                    if ((this.game.turn % 2) == 0) {
+                        this.color = "red";
+                    }
+                    else {
+                        this.color = "blue";
+                    }
+                    this.game.turn += 1;
+                    this.clicked = true;
+                }
             }
             else {
-                this.color = "dimgray";
+                if (!this.clicked) {
+                    this.color = "dimgray"
+                }
             }
         }
         else {
-            if (!this.clicked) {
-                this.color = "white";
-            }
+            if (!this.clicked) {this.color = "white"}
         }
     }
 
@@ -39,6 +47,9 @@ export default class Square {
         ctx.fillStyle = this.color;
         if (!(this.color == "white")) {
             ctx.fillRect(this.x,this.y,this.size,this.size);
+            if (this.color == "red") {
+                // draw circle. remember to actually do this.
+            }
         }
         else {
             ctx.strokeRect(this.x,this.y,this.size,this.size);

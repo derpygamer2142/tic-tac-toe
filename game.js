@@ -23,6 +23,8 @@ export default class Game {
             }
         }
 
+        this.turn = 0;
+
 
     }
 
