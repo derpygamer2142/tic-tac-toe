@@ -2,8 +2,8 @@ import Game from "./game.js";
 
 
 /*
-make xs and os show up
-maybe do win calculations
+we will use expressjs
+socket.io for communication
 */
 const canv = document.querySelector("canvas");
 const ctx = canv.getContext("2d");
@@ -16,11 +16,13 @@ canv.height = HEIGHT;
 
 let game = new Game(WIDTH,HEIGHT);
 function main() {
-    ctx.fillStyle = "grey";
-    ctx.fillRect(0,0,WIDTH,HEIGHT);
-    game.update();
+    if (game.gameState == 0) {
+        ctx.fillStyle = "grey";
+        ctx.fillRect(0,0,WIDTH,HEIGHT);
+        game.update();
 
-    game.draw(ctx);
+        game.draw(ctx);
+    }
 }
 
 setInterval(main,17);

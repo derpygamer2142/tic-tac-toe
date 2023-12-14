@@ -13,6 +13,7 @@ export default class Square {
 
         this.clicked = false;
         this.color = "white";
+        this.type = null;
     }
 
     update() {
@@ -22,9 +23,11 @@ export default class Square {
                 if (!this.clicked) {
                     if ((this.game.turn % 2) == 0) {
                         this.color = "red";
+                        this.type = "o";
                     }
                     else {
                         this.color = "blue";
+                        this.type = "x";
                     }
                     this.game.turn += 1;
                     this.clicked = true;
@@ -69,5 +72,6 @@ export default class Square {
         else {
             ctx.strokeRect(this.x,this.y,this.size,this.size);
         }
+        ctx.fillText(this.game.squares.indexOf(this),this.x,this.y)
     }
 }
