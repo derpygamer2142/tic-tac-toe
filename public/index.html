@@ -9,7 +9,7 @@
     <script src="/socket.io/socket.io.js"></script>
     <!-- <script src="script.js" type="module" defer></script>
     <canvas></canvas> -->
-    <button>
+    <button id="epicbutton">
         eeeeeeeeeee
     </button>
     <script>
@@ -17,7 +17,14 @@
         const container = document.getElementById("container");
         function onClick() {
             let element = document.createElement("h1");
+            element.text = "wow"
             container.appendChild(element);
+        }
+        socket.on('message', onClick());
+
+        const button = document.getElementById("epicbutton")
+        button.onClick() = () => {
+            socket.emit('message', `epic emit`)
         }
         
 
