@@ -1,7 +1,8 @@
 import Square from "./squares.js";
 import Input from "./input.js";
 export default class Game {
-    constructor(width, height) {
+    constructor(width, height,shape="o") {
+        this.shape = shape
         this.width = width;
         this.height = height;
 

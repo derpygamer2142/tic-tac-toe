@@ -10,20 +10,31 @@ const ctx = canv.getContext("2d");
 
 const WIDTH = window.innerWidth;
 const HEIGHT = window.innerHeight;
+let url = window.location.href
+let urlArray = url.split("/")
+let roomID = urlArray[4]
+let shape = "o"
 
 const socket = io()
 
-socket.on('message', arg1 => {
-    console.log(arg1)
+socket.emit("join room", roomID)
+
+socket.on("start host", () => {
+    socket.emit("start guest")
+})
+socket.on("init x", () => {
+    shape = "x"
 })
 
-const container = document.getElementById("container")
+
 
 canv.width = WIDTH;
 canv.height = HEIGHT;
 
-let game = new Game(WIDTH,HEIGHT);
+let game = new Game(WIDTH,HEIGHT,shape);
 function main() {
+    game.shape = shape
+    console.log(game.shape)
     if (game.gameState == 0) {
         ctx.fillStyle = "grey";
         ctx.fillRect(0,0,WIDTH,HEIGHT);

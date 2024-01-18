@@ -7,31 +7,36 @@
 </head>
 <body>
     <script src="/socket.io/socket.io.js"></script>
-    <!-- <script src="script.js" type="module" defer></script>
-    <canvas></canvas> -->
-    <button id="epicbutton">
+    <script src="script.js" type="module" defer></script>
+    <canvas></canvas>
+
+    <!--<button id="epicbutton" onclick="sendMessage()">
         eeeeeeeeeee
     </button>
-    <script>
+    <div id="container">
+
+    </div>-->
+    <!--<script>
         let socket = io();
         const container = document.getElementById("container");
         function onClick() {
             let element = document.createElement("h1");
-            element.text = "wow"
+            element.innerText = "wow"
             container.appendChild(element);
         }
-        socket.on('message', onClick());
 
         const button = document.getElementById("epicbutton")
-        button.onClick() = () => {
-            socket.emit('message', `epic emit`)
+        function sendMessage() {
+            socket.emit("send message")
         }
+
+        socket.on("receive message", () => {
+            onClick()
+            console.log("received b")
+        })
         
 
-    </script>
-    <!--
-        homework: make the button add the element
-    -->
+    </script>-->
     <div id="container">
 
     </div>
