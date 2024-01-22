@@ -5,6 +5,7 @@ import Game from "./game.js";
 we will use expressjs
 socket.io for communication
 */
+console.log("change worked")
 const canv = document.querySelector("canvas");
 const ctx = canv.getContext("2d");
 

@@ -24,6 +24,7 @@ export default class Square {
                 if (!this.clicked) {
                     if ((this.game.shape == "x" && this.game.turn % 2 == 1) || (this.game.shape == "o" && this.game.turn % 2 == 0)) {
                         this.game.socket.emit("next turn",this.num)
+                        this.clicked = true
                     }
                     // if ((this.game.turn % 2) == 0) {
                     //     this.color = "red";
