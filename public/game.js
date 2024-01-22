@@ -21,6 +21,7 @@ export default class Game {
         this.input = new Input();
 
         this.squares = [];
+        let e = 0
         for (let y = 0; y < 3; y++) {
             for (let x = 0; x < 3; x++) {
                 let square = new Square(this,x,y)
@@ -30,8 +31,10 @@ export default class Game {
                 square.y += height/2;
                 square.x -= square.size*1.5;
                 square.y -= square.size*1.5;
+                square.num = e
 
                 this.squares.push(square);
+                e += 1
             }
         }
 
@@ -54,6 +57,10 @@ export default class Game {
     }
 
     draw(ctx) {
+        ctx.fillStyle = "black"
+        ctx.font = "bold 35px Comic Sans MS";
+        ctx.textAlign = "left"
+        ctx.fillText(`You are ${this.shape}s.`,0,0-(this.height*0.3))
         this.squares.forEach(s => {
             s.draw(ctx);
         });

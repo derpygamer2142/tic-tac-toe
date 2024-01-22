@@ -26,12 +26,26 @@ socket.on("init x", () => {
     shape = "x"
 })
 
+socket.on("next turn", (shape) => {
+    let s = game.squares[shape]
+    s.clicked = true
+    if (game.turn % 2 == 1) {
+        s.color = "red"
+        s.type = "o"
+    }
+    else {
+        s.color = "blue"
+        s.type = "x"
+    }
 
+    game.turn += 1
+})
 
 canv.width = WIDTH;
 canv.height = HEIGHT;
 
 let game = new Game(WIDTH,HEIGHT,shape);
+game.socket = socket
 function main() {
     game.shape = shape
     console.log(game.shape)

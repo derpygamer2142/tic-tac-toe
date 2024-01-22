@@ -47,6 +47,12 @@ io.on('connection', (socket) => {
   })
 
 
+
+  socket.on("next turn", (shape) => {
+    let [roomID] = socket.rooms;
+    socket.to(roomID).emit("next turn", shape)
+  })
+
   socket.on("start guest", () => {
     let [roomID] = socket.rooms;
     socket.to(roomID).emit("start game", roomID)

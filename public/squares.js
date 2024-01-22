@@ -14,6 +14,7 @@ export default class Square {
         this.clicked = false;
         this.color = "white";
         this.type = null;
+        this.num = -1
     }
 
     update() {
@@ -21,16 +22,18 @@ export default class Square {
             
             if (this.input.mouseDown) {
                 if (!this.clicked) {
-                    if ((this.game.turn % 2) == 0) {
-                        this.color = "red";
-                        this.type = "o";
+                    if ((this.game.shape == "x" && this.game.turn % 2 == 1) || (this.game.shape == "o" && this.game.turn % 2 == 0)) {
+                        this.game.socket.emit("next turn",this.num)
                     }
-                    else {
-                        this.color = "blue";
-                        this.type = "x";
-                    }
-                    this.game.turn += 1;
-                    this.clicked = true;
+                    // if ((this.game.turn % 2) == 0) {
+                    //     this.color = "red";
+                    //     this.type = "o";
+                    // }
+                    // else {
+                    //     this.color = "blue";
+                    //     this.type = "x";
+                    // }
+                    //this.game.turn += 1;
                 }
             }
             else {
